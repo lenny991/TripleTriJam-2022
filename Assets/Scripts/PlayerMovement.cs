@@ -13,14 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public float dashDelay = 2;
 
     //REFERENCES
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    Vector2 movement;
+    private Vector2 movement;
     
     private void FixedUpdate()
     {

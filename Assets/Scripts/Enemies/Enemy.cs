@@ -32,12 +32,27 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        CheckBoundaries();
+
         if (isKnockingBack)
             return;
 
         FindPlayer();
 
         AiStateCheck();
+    }
+
+    private void CheckBoundaries()
+    {
+        if (transform.position.x > 9)
+            target = new Vector3(transform.position.x + Random.Range(-2, 0), transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
+        else if (transform.position.x < -9)
+            target = new Vector3(transform.position.x + Random.Range(0, 2), transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
+        else if (transform.position.y > 5)
+            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(-2, 0), transform.position.z);
+        else if (transform.position.x < -10)
+            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(0, 2), transform.position.z);
+
     }
 
     private void FindPlayer()
@@ -82,6 +97,7 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        GameManager.Instance.enemies.Remove(gameObject);
         Destroy(gameObject);
     }
 

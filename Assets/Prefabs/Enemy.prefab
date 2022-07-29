@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 9220829995272799813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.78, y: 1.57, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 9220829994374539112}
   m_Father: {fileID: 0}
@@ -130,10 +130,10 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   distanceToFindPlayer: 5
   distanceToRoamingPoint: 0.1
-  moveSpeed: 1.4
   idleMoveSpeed: 0.4
   health: 10
   roamingDistance: 1.4
+  moveSpeed: 1.4
   damage: 1
 --- !u!61 &9220829995272799809
 BoxCollider2D:
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.10851908, y: -0.06510937}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,5 +159,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.9082785, y: 4.6896067}
   m_EdgeRadius: 0

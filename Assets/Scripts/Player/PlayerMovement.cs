@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashLength = 6;
     public float dashDelay = 2;
 
+    bool canPlayWalkingSound = true;
     bool dashing;
     bool canDash = true;
     [HideInInspector] public bool isKnockingBack = false;
@@ -56,6 +57,15 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = dir * speed;
         visuals.moving = dir != Vector2.zero;
         visuals.SetDirection(rotateTowards.position - transform.position);
+        if (dir != Vector2.zero && canPlayWalkingSound)
+            StartCoroutine("WalkAudioCoroutine");
+    }
+
+    IEnumerator WalkAudioCoroutine()
+    {
+        canPlayWalkingSound = false;
+        yield return new WaitForSeconds(AudioManager.instance.Play("Test"));
+        canPlayWalkingSound = true;
     }
 
     void Dash(Vector2 dir)

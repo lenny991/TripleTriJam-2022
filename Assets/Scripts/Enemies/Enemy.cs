@@ -14,9 +14,10 @@ public class Enemy : MonoBehaviour
     private Transform playerTransform;
 
     // variables
-    [SerializeField] private float distanceToFindPlayer = 4, distanceToRoamingPoint = 0.2f, moveSpeed = 2, idleMoveSpeed = 0.8f;
+    [SerializeField] private float distanceToFindPlayer = 4, distanceToRoamingPoint = 0.2f, idleMoveSpeed = 0.8f;
     public int health = 10;
     [SerializeField] private float roamingDistance;
+    [SerializeField] public float moveSpeed = 2;
 
     public int damage = 1;
     
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     {
         playerTransform = GameObject.Find("Player").transform;
         target = transform.position;
+        lastAIState = AIState.Angry;
     }
 
     private void Update()
@@ -42,12 +44,16 @@ public class Enemy : MonoBehaviour
     private void FindPlayer()
     {
         if (Vector2.Distance(playerTransform.position, transform.position) <= distanceToFindPlayer)
+        {
             target = playerTransform.position;
+            aiState = AIState.Angry;
+        }
+        else
+            aiState = AIState.Idle;
     }
 
     private void AiStateCheck()
     {
-        if (aiState != lastAIState) return;
         switch (aiState)
         {
             case AIState.Idle:

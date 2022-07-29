@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
     // tpyes && states
     private EnemyType type;
     private AIState aiState = AIState.Idle, lastAIState;
+    bool isKnockingBack;
 
     // targets && references
     [SerializeField] private Vector3 target; //TODO: remove  [SerializeField]
@@ -20,7 +22,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float moveSpeed = 2;
 
     public int damage = 1;
-    
 
     private void Start()
     {
@@ -31,15 +32,13 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
-            Death();
+        if (isKnockingBack)
+            return;
 
         FindPlayer();
 
         AiStateCheck();
     }
-
-
 
     private void FindPlayer()
     {
@@ -83,11 +82,8 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-        
         Destroy(gameObject);
     }
-
-
 
     // reapeating code functions
 
@@ -104,6 +100,30 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Debug.DrawLine(transform.position, target);
+    }
+
+    //TAKING DAMAGE AND SUCH;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent<ScrewDriverScript>(out var skr))
+        {
+            health--;
+            if (health <= 0)
+                Death();
+            KnockBack((transform.position - skr.transform.position).normalized);
+        }
+    }
+
+    public void KnockBack(Vector2 dir)
+    {
+        isKnockingBack = true;
+        Vector2 pos = transform.position;
+        Tween knockBack = transform.DOJump(pos + dir, .3f, 1, .3f);
+        knockBack.onComplete += () =>
+        {
+            isKnockingBack = false;
+        };
     }
 }
 

@@ -12,10 +12,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashLength = 6;
     public float dashDelay = 2;
 
+    bool dashing;
+    bool canDash = true;
+    [HideInInspector] public bool isKnockingBack = false;
+
     //REFERENCES
     Rigidbody2D rb;
     PlayerVisuals visuals;
     Player player;
+    public Transform rotateTowards;
 
     private void Start()
     {
@@ -49,10 +54,9 @@ public class PlayerMovement : MonoBehaviour
     void Move(Vector2 dir)
     {
         rb.velocity = dir * speed;
+        visuals.moving = dir != Vector2.zero;
+        visuals.SetDirection(rotateTowards.position - transform.position);
     }
-
-    bool dashing;
-    bool canDash = true;
 
     void Dash(Vector2 dir)
     {
@@ -76,8 +80,18 @@ public class PlayerMovement : MonoBehaviour
     bool CanMove()
     {
         //RETURN FALSE IF YOU SHOULDNT BE ABLE TO MOVE
-        if (dashing || player.dead)
+        if (dashing || player.dead || isKnockingBack)
             return false;
         return true;
+    }
+
+    public void KnockBack(Vector2 dir)
+    {
+        isKnockingBack = true;
+        Tween knockBack = rb.DOJump(rb.position + dir, .3f, 1, .3f);
+        knockBack.onComplete += () =>
+        {
+            isKnockingBack = false;
+        };
     }
 }

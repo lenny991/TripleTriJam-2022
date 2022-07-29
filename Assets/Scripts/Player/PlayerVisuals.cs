@@ -6,15 +6,13 @@ using DG.Tweening;
 
 public class PlayerVisuals : MonoBehaviour
 {
-
     //References
     Animator anim;
-    SpriteRenderer sr;
+    public SpriteRenderer[] allAffectedRenderers;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     //TODO; HOOK UP THE ANIMATOR
@@ -24,16 +22,24 @@ public class PlayerVisuals : MonoBehaviour
     {
         set
         {
-            //anim.SetBool("Moving", value);
+            anim.SetBool("Moving", value);
         }
     }
 
     public void SetDirection(Vector2 dir)
     {
-        //anim.SetFloat("X", dir.x);
-        //anim.SetFloat("Y", dir.y);
+        if (dir == Vector2.zero)
+            return;
+
+        anim.SetFloat("X", dir.x);
+        anim.SetFloat("Y", dir.y);
+        if(dir.x != 0)
+            transform.localScale = new Vector2(dir.x > 0 ? .3f : -.3f, transform.localScale.y);
     }
 
-    public void SetInvis(bool invis) =>
-        sr.color = invis ? new Color(sr.color.r, sr.color.g, sr.color.b, .5f) : new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+    public void SetInvis(bool invis)
+    {
+        foreach (SpriteRenderer sr in allAffectedRenderers)
+            sr.color = invis ? new Color(sr.color.r, sr.color.g, sr.color.b, .5f) : new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+    }
 }

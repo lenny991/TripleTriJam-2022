@@ -14,12 +14,13 @@ public class Player : MonoBehaviour
     [Header("References")]
     PlayerVisuals visuals;
     public GameObject respawnCanvas;
+    PlayerMovement movement;
 
     private void Start()
     {
         visuals = GetComponentInChildren<PlayerVisuals>();
+        movement = GetComponent<PlayerMovement>();
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +37,9 @@ public class Player : MonoBehaviour
                 visuals.SetInvis(false);
                 invincible = false;
             }
+
+            movement.KnockBack((transform.position - enemy.transform.position).normalized);
+
             if (health <= 0)
             {
                 //DIE

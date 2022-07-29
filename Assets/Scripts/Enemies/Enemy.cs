@@ -18,7 +18,8 @@ public class Enemy : MonoBehaviour
     public int health = 10;
     [SerializeField] private float roamingDistance;
 
-
+    public int damage = 1;
+    
 
     private void Start()
     {
@@ -73,9 +74,6 @@ public class Enemy : MonoBehaviour
     {
         MoveTowardsTarget(moveSpeed);
     }
-
-
-
 
     private void Death()
     {

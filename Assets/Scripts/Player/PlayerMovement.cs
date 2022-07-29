@@ -13,11 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashDelay = 2;
 
     //REFERENCES
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
+    PlayerVisuals visuals;
+    Player player;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        visuals = GetComponentInChildren<PlayerVisuals>();
+        player = GetComponent<Player>();
     }
 
     private Vector2 movement;
@@ -72,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     bool CanMove()
     {
         //RETURN FALSE IF YOU SHOULDNT BE ABLE TO MOVE
-        if (dashing)
+        if (dashing || player.dead)
             return false;
         return true;
     }

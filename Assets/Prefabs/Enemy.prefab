@@ -131,9 +131,9 @@ MonoBehaviour:
   distanceToFindPlayer: 5
   distanceToRoamingPoint: 0.1
   idleMoveSpeed: 0.4
-  health: 10
+  health: 1
   roamingDistance: 1.4
-  moveSpeed: 1.4
+  moveSpeed: 2
   damage: 1
 --- !u!61 &9220829995272799809
 BoxCollider2D:
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10851908, y: -0.06510937}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,5 +159,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9082785, y: 4.6896067}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0

@@ -55,3 +55,11 @@ public class GameManager : Singleton<GameManager>
             NewWave();
     }
 }
+
+[System.Serializable]
+public class EnemySpawn
+{
+    //USE THIS LATER TO DETERMINE WHERE ENEMIES FIRST START SPAWNING!!!
+    public GameObject enemy;
+    public int firstWave;
+}

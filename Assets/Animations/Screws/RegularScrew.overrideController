@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RegularScrew
+  m_Controller: {fileID: 9100000, guid: 7a104738555690948b542b5ff8e38fe6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a3d5315226e1b4d469fc00dd52df353c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5df938f06e9bc2f4f92a193b0412fcbf, type: 2}

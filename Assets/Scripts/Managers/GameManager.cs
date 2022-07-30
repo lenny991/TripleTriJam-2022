@@ -17,6 +17,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int defaultWaveEnemiesInt;
     private int remainingSpawns;
 
+    const float screen_x = 8.5f;
+    const float screen_y = 4.5f;
+
     private void Start()
     {
         SpawnEnemies();
@@ -26,9 +29,15 @@ public class GameManager : Singleton<GameManager>
     private GameObject SpawnEnemy()
     {
         var enemy = Instantiate(enemyPrefabs.GetRandomEnemy(wave));
-        //enemy.transform.parent = this.gameObject.transform;
-        enemy.transform.position = new Vector3(Random.Range(-11, 11), Random.Range(-6, 6), 0);
-        //enemy.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+        Vector2 pos = new Vector2(Random.Range(-11, 11), Random.Range(-6, 6));
+        if (Random.Range(0, 2) == 0)
+            pos = new Vector2(pos.x, Random.Range(0, 2) == 0 ? screen_y : -screen_y);
+        else
+            pos = new Vector2(Random.Range(0, 2) == 0 ? screen_x : -screen_x, pos.y);
+
+        enemy.transform.position = pos;
+
         enemy.GetComponent<Enemy>().moveSpeed = Random.Range(minEnemiesSpeed, maxEnemiesSpeed);
         return enemy;
     }

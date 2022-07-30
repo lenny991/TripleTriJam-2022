@@ -641,7 +641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7284b300c71734fab2a2fdfef6cdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 9220829995272799813, guid: 53301a60fbc9c1547829867dccc3ba03, type: 3}
+  enemyPrefabs:
+  - enemy: {fileID: 9220829995272799813, guid: c0f81929f0e13714f91be7dc892567d6, type: 3}
+    firstWave: 0
+  - enemy: {fileID: 9220829995272799813, guid: 53301a60fbc9c1547829867dccc3ba03, type: 3}
+    firstWave: 5
   enemies: []
   minEnemiesSpeed: 1
   maxEnemiesSpeed: 1.8
@@ -961,6 +965,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitDelay: 0.5
+  screwDrivers:
+  - {fileID: 11400000, guid: e9338a999f9f8b84da473d25c8ee72b9, type: 2}
+  - {fileID: 11400000, guid: e249ca340545a51448d82b07f5916012, type: 2}
 --- !u!1 &993539616
 GameObject:
   m_ObjectHideFlags: 0

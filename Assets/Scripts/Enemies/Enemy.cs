@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public int health = 10;
     [SerializeField] private float roamingDistance;
     [SerializeField] public float moveSpeed = 2;
+    public ScrewDriver acceptedDriver;
 
     public int damage = 1;
 
@@ -123,7 +124,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<ScrewDriverScript>(out var skr))
+        if(collision.TryGetComponent<ScrewDriverScript>(out var skr) && skr.screwDriver == acceptedDriver)
         {
             health--;
             if (health <= 0)

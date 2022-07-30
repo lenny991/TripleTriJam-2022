@@ -5,7 +5,7 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private List<EnemySpawn> enemyPrefabs;
     [SerializeField] public List<GameObject> enemies;
     [SerializeField] [Range(1, 3)] private float minEnemiesSpeed, maxEnemiesSpeed;
 
@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 
     private GameObject SpawnEnemy()
     {
-        var enemy = Instantiate(enemyPrefab);
+        var enemy = Instantiate(enemyPrefabs.GetRandomEnemy(wave));
         //enemy.transform.parent = this.gameObject.transform;
         enemy.transform.position = new Vector3(Random.Range(-11, 11), Random.Range(-6, 6), 0);
         //enemy.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
@@ -62,4 +62,13 @@ public class EnemySpawn
     //USE THIS LATER TO DETERMINE WHERE ENEMIES FIRST START SPAWNING!!!
     public GameObject enemy;
     public int firstWave;
+}
+
+public static class GameExtensions
+{
+    public static GameObject GetRandomEnemy(this List<EnemySpawn> r, int wave)
+    {
+        List<EnemySpawn> possible = r.FindAll(x => x.firstWave <= wave);
+        return possible[Random.Range(0, possible.Count)].enemy;
+    }
 }

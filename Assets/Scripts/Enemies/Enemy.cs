@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     private EnemyType type;
     private AIState aiState = AIState.Idle, lastAIState;
     bool isKnockingBack;
+    bool isDying;
 
     // targets && references
     [SerializeField] private Vector3 target; //TODO: remove  [SerializeField]
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        playerTransform = GameObject.Find("Player").transform;
+        playerTransform = Player.Instance.transform;
         target = transform.position;
         lastAIState = AIState.Angry;
     }
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
     {
         CheckBoundaries();
 
-        if (isKnockingBack)
+        if (isKnockingBack || isDying)
             return;
 
         FindPlayer();
@@ -52,7 +54,6 @@ public class Enemy : MonoBehaviour
             target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(-2, 0), transform.position.z);
         else if (transform.position.x < -10)
             target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(0, 2), transform.position.z);
-
     }
 
     private void FindPlayer()
@@ -126,12 +127,16 @@ public class Enemy : MonoBehaviour
         {
             health--;
             if (health <= 0)
-                Death();
-            KnockBack((transform.position - skr.transform.position).normalized);
+            {
+                KnockBack((transform.position - playerTransform.position).normalized, Death);
+                isDying = true;
+            }
+            else
+                KnockBack((transform.position - playerTransform.position).normalized);
         }
     }
 
-    public void KnockBack(Vector2 dir)
+    public void KnockBack(Vector2 dir, UnityAction doAfter = null)
     {
         isKnockingBack = true;
         Vector2 pos = transform.position;
@@ -139,6 +144,8 @@ public class Enemy : MonoBehaviour
         knockBack.onComplete += () =>
         {
             isKnockingBack = false;
+            if (doAfter != null)
+                doAfter();
         };
     }
 }

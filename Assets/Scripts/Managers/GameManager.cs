@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject SpawnEnemy()
     {
         var enemy = Instantiate(enemyPrefab);
-        enemy.transform.parent = this.gameObject.transform;
+        //enemy.transform.parent = this.gameObject.transform;
         enemy.transform.position = new Vector3(Random.Range(-11, 11), Random.Range(-6, 6), 0);
         //enemy.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         enemy.GetComponent<Enemy>().moveSpeed = Random.Range(minEnemiesSpeed, maxEnemiesSpeed);

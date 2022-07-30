@@ -58,14 +58,14 @@ public class PlayerMovement : MonoBehaviour
         visuals.moving = dir != Vector2.zero;
         visuals.SetDirection(rotateTowards.position - transform.position);
         if (dir != Vector2.zero && canPlayWalkingSound)
-            StartCoroutine("WalkAudioCoroutine");
-    }
+            StartCoroutine(WalkAudioCoroutine());
 
-    IEnumerator WalkAudioCoroutine()
-    {
-        canPlayWalkingSound = false;
-        yield return new WaitForSeconds(AudioManager.instance.Play("Test"));
-        canPlayWalkingSound = true;
+        IEnumerator WalkAudioCoroutine()
+        {
+            canPlayWalkingSound = false;
+            yield return new WaitForSeconds(AudioManager.instance.Play("Footstep"));
+            canPlayWalkingSound = true;
+        }
     }
 
     void Dash(Vector2 dir)

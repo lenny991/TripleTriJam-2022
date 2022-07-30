@@ -6,4 +6,5 @@ using UnityEngine;
 public class ScrewDriver : ScriptableObject
 {
     public Sprite sprite;
+    public int waveUnlock;
 }

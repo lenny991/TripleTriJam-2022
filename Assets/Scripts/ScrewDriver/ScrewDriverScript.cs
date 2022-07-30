@@ -14,11 +14,13 @@ public class ScrewDriverScript : MonoBehaviour
 
     //OTHER
     public List<ScrewDriver> screwDrivers;
+    List<ScrewDriver> unlockedDrivers;
     int selection;
+
     public ScrewDriver screwDriver
     {
         get =>
-            screwDrivers[selection];
+            unlockedDrivers[selection];
     }
 
     private void Start()
@@ -27,6 +29,14 @@ public class ScrewDriverScript : MonoBehaviour
         canHit = true;
 
         sr = GetComponent<SpriteRenderer>();
+
+        GameManager.waveUpdate.AddListener(x =>
+        {
+            unlockedDrivers = screwDrivers.GetUnlockedDrivers(x);
+        });
+
+        unlockedDrivers = screwDrivers.GetUnlockedDrivers(0);
+
         SelectDriver(screwDriver);
     }
 
@@ -50,12 +60,12 @@ public class ScrewDriverScript : MonoBehaviour
         if(scroll != 0)
         {
             int where = selection + (scroll > 0 ? 1 : -1);
-            if (where >= screwDrivers.Count)
+            if (where >= unlockedDrivers.Count)
                 where = 0;
             else if (where < 0)
-                where = screwDrivers.Count - 1;
+                where = unlockedDrivers.Count - 1;
             selection = where;
-            SelectDriver(screwDrivers[where]);
+            SelectDriver(screwDriver);
         }
     }
 

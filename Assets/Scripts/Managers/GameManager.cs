@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using UnityEngine.Events;
 using TMPro;
 
 public class GameManager : Singleton<GameManager>
@@ -20,9 +22,17 @@ public class GameManager : Singleton<GameManager>
     const float screen_x = 8.5f;
     const float screen_y = 4.5f;
 
+    public static UnityEvent<int> waveUpdate = new UnityEvent<int>();
+
+    private void OnDestroy()
+    {
+        waveUpdate.RemoveAllListeners();
+    }
+
     private void Start()
     {
         SpawnEnemies();
+        waveUpdate.Invoke(0);
         waveText.text = "Wave " + wave;
     }
 
@@ -53,6 +63,7 @@ public class GameManager : Singleton<GameManager>
     private void NewWave()
     {
         wave++;
+        waveUpdate.Invoke(wave);
         remainingSpawns = (wave * defaultWaveEnemiesInt) / 2;
         SpawnEnemies();
         waveText.text = "Wave " + wave;
@@ -79,5 +90,11 @@ public static class GameExtensions
     {
         List<EnemySpawn> possible = r.FindAll(x => x.firstWave <= wave);
         return possible[Random.Range(0, possible.Count)].enemy;
+    }
+
+    public static List<ScrewDriver> GetUnlockedDrivers(this List<ScrewDriver> r, int wave)
+    {
+        List<ScrewDriver> possible = r.FindAll(x => x.waveUnlock <= wave);
+        return possible;
     }
 }

@@ -38,26 +38,26 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        CheckBoundaries();
-
         if (isKnockingBack || isDying)
             return;
 
+        CheckBoundaries();
+
         FindPlayer();
 
-        AiStateCheck();
+        AiStateCheck();     
     }
 
     private void CheckBoundaries()
     {
         if (transform.position.x > screen_x)
-            target = new Vector3(transform.position.x + Random.Range(-3, 0), transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
+            target = new Vector3(transform.position.x - 3, transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
         else if (transform.position.x < -screen_x)
-            target = new Vector3(transform.position.x + Random.Range(0, 3), transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
+            target = new Vector3(transform.position.x + 3, transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
         else if (transform.position.y > screen_y)
-            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(-3, 0), transform.position.z);
+            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y - 3, transform.position.z);
         else if (transform.position.y < -screen_y)
-            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + Random.Range(3, 0), transform.position.z);
+            target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + 3, transform.position.z);
     }
 
     private void FindPlayer()

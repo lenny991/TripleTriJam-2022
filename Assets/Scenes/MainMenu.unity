@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 62aeb80bff2a8d24ca29740ec8284934, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3a9a626770749244bc0b118a419b481, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 18552637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.93, y: 0.93, z: 0.93}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d2ec4fd3183b4e824e5605b334b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Game
 --- !u!114 &19595950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,10 +518,10 @@ RectTransform:
   m_Father: {fileID: 1822410269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 391.4}
-  m_SizeDelta: {x: -1419.7, y: -978.57}
+  m_AnchorMin: {x: 0.33522913, y: 0.77772236}
+  m_AnchorMax: {x: 0.68460417, y: 1}
+  m_AnchoredPosition: {x: -19.5, y: -28.600006}
+  m_SizeDelta: {x: -170.69995, y: -138.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331478077
 MonoBehaviour:
@@ -855,6 +854,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1829216400
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8036066862089189962, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: sounds.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: sounds.Array.data[16].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0dd84797dba6f8040b8ac3051cfcc8e7, type: 3}
+    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: Start game v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: sounds.Array.data[16].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
 --- !u!1 &1900542182
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME NAME
+  m_text: SCREW IT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8819c2e345429147addbede13a4d4e9, type: 2}
   m_sharedMaterial: {fileID: -6659971330263000382, guid: e8819c2e345429147addbede13a4d4e9, type: 2}
@@ -1085,8 +1161,10 @@ GameObject:
   - component: {fileID: 2104734771}
   - component: {fileID: 2104734770}
   - component: {fileID: 2104734769}
+  - component: {fileID: 2104734774}
+  - component: {fileID: 2104734773}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1124,7 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d2ec4fd3183b4e824e5605b334b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Game
 --- !u!114 &2104734770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,13 +1249,13 @@ MonoBehaviour:
       - m_Target: {fileID: 2104734769}
         m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
         m_MethodName: LoadScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2104734771
@@ -1219,3 +1296,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104734767}
   m_CullTransparentMesh: 1
+--- !u!114 &2104734773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104734767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &2104734774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104734767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10

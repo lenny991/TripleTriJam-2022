@@ -72,5 +72,7 @@ public class ScrewDriverScript : MonoBehaviour
     public void SelectDriver(ScrewDriver driver)
     {
         sr.sprite = driver.sprite;
+        int i = Random.Range(1, 4);
+        AudioManager.instance.Play("Screwdriver switching " + i);
     }
 }

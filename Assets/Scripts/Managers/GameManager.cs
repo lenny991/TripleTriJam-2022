@@ -19,6 +19,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int defaultWaveEnemiesInt;
     private int remainingSpawns;
 
+    public int combo = 0;
+
     const float screen_x = 8.5f;
     const float screen_y = 4.5f;
 
@@ -34,6 +36,13 @@ public class GameManager : Singleton<GameManager>
         SpawnEnemies();
         waveUpdate.Invoke(0);
         waveText.text = "Wave " + wave;
+        StartCoroutine("ThemeSongCoroutine");
+    }
+
+    IEnumerator ThemeSongCoroutine()
+    {
+        yield return new WaitForSeconds(AudioManager.instance.Play("Theme start"));
+        AudioManager.instance.Play("Theme");
     }
 
     private GameObject SpawnEnemy()

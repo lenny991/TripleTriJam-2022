@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private AIState aiState = AIState.Idle, lastAIState;
     bool isKnockingBack;
     bool isDying;
+    bool canPlayWalkingSound = true;
 
     // targets && references
     [SerializeField] private Vector3 target; //TODO: remove  [SerializeField]
@@ -111,6 +112,16 @@ public class Enemy : MonoBehaviour
     private void MoveTowardsTarget(float speed)
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        if (canPlayWalkingSound)
+            StartCoroutine(ScrewWalkingSoundCoroutine());
+    }
+
+    IEnumerator ScrewWalkingSoundCoroutine()
+    {
+        canPlayWalkingSound = false;
+        int i = Random.Range(1, 4);
+        yield return new WaitForSeconds(AudioManager.instance.Play("Screw walking " + i) + .3f);
+        canPlayWalkingSound = true;
     }
 
     private bool IsNearTarget()
@@ -134,6 +145,8 @@ public class Enemy : MonoBehaviour
             {
                 KnockBack((transform.position - playerTransform.position).normalized, Death);
                 isDying = true;
+                AudioManager.instance.Play("Screw death");
+                GameManager.Instance.combo += 1;
             }
             else
                 KnockBack((transform.position - playerTransform.position).normalized);
@@ -142,6 +155,7 @@ public class Enemy : MonoBehaviour
 
     public void KnockBack(Vector2 dir, UnityAction doAfter = null)
     {
+        AudioManager.instance.Play("Screwdriver attack - end");
         isKnockingBack = true;
         Vector2 pos = transform.position;
         Tween knockBack = transform.DOJump(pos + dir, .3f, 1, .3f);

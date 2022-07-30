@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8036066862089189962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8036066862089189964}
+  - component: {fileID: 8036066862089189963}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8036066862089189964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036066862089189962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8036066862089189963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036066862089189962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97be4bd68e90eb4bac8d54b8b0b727d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme start
+    clip: {fileID: 8300000, guid: b012e4036f2b2d14f9d843178a335418, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 287959dfe24e5d04fa2f284cf9f82cdd, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: PlayerGetHit
+    clip: {fileID: 8300000, guid: 077fed25b8c06fa408bd0a9da467c29c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep1
+    clip: {fileID: 8300000, guid: ded071638be0c64459541f3bab75e3f8, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep2
+    clip: {fileID: 8300000, guid: b556a75058fa6f643a2aea4d2a7cd61e, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep3
+    clip: {fileID: 8300000, guid: 884a52c227d6dde4688eedfd7d991663, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver switching 1
+    clip: {fileID: 8300000, guid: 360561bce9659394aa86ed284dde568c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver switching 3
+    clip: {fileID: 8300000, guid: fe018dd56121f5b4f9214d6929a220b1, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver switching 3
+    clip: {fileID: 8300000, guid: 6683c28f260d3224896a9bf7aead55d1, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver attack - start
+    clip: {fileID: 8300000, guid: 55be9cd6e04f34d45a54406500520b8d, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver attack - end
+    clip: {fileID: 8300000, guid: 899ac68ee6d41984187f226aa34974e3, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screwdriver attack end - notification
+    clip: {fileID: 8300000, guid: 99486d485612b204ab8a5b25efea9e62, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screw death
+    clip: {fileID: 8300000, guid: d2eb55efda7b4c74da719e9a8cdc8669, type: 3}
+    volume: 0.3
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: Screw walking 1
+    clip: {fileID: 8300000, guid: c1886d3e804abcb4c8b45110b4d531f3, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screw walking 2
+    clip: {fileID: 8300000, guid: f7fa2467daac97049a0b8fe13f0477aa, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Screw walking 3
+    clip: {fileID: 8300000, guid: 11b9bb9fcc8d7074497bb0fbae0660b7, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

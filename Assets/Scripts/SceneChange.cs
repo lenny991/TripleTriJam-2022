@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SceneChange : MonoBehaviour
 {
-    public string scene;
-    public void LoadScene()
+    public void LoadScene(string scene)
     {
+        Debug.Log("Loading scene " + scene);
         TransitionManager.Instance.LoadScene(scene);
+        AudioManager.instance.Play("Start game v2");
     }
 }

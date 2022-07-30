@@ -63,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator WalkAudioCoroutine()
         {
             canPlayWalkingSound = false;
-            yield return new WaitForSeconds(AudioManager.instance.Play("Footstep"));
+            int i = Random.Range(1, 4);
+            yield return new WaitForSeconds(AudioManager.instance.Play("Footstep"+i));
             canPlayWalkingSound = true;
         }
     }

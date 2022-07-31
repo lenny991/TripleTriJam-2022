@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         SpawnEnemies();
         waveUpdate.Invoke(0);
         waveText.text = "Wave " + wave;
-        StartCoroutine("ThemeSongCoroutine");
+        StartCoroutine(ThemeSongCoroutine());
     }
 
     IEnumerator ThemeSongCoroutine()

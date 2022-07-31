@@ -931,26 +931,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
-      propertyPath: sounds.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
-      propertyPath: sounds.Array.data[16].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0dd84797dba6f8040b8ac3051cfcc8e7, type: 3}
-    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
-      propertyPath: sounds.Array.data[16].name
-      value: Start game v2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
-      propertyPath: sounds.Array.data[16].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036066862089189963, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
-      propertyPath: sounds.Array.data[16].volume
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8036066862089189964, guid: 2b5bb47a92ff73a4fa64c7235c8dd5c5, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -15,4 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: e18a25a5d72b4d14080283fe8ee7a03a, type: 3}
   waveUnlock: 15
   spriteUI: {fileID: 21300000, guid: 060722ca93029b640994ebe3bc6e8998, type: 3}
-  keyCode: 0
+  keyCode: 52

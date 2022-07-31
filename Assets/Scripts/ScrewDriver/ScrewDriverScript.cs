@@ -29,8 +29,11 @@ public class ScrewDriverScript : MonoBehaviour
 
     public ScrewDriver screwDriver
     {
-        get =>
-            unlockedDrivers[selection];
+        get
+        {
+            Debug.Log("Selection " + selection);
+            return unlockedDrivers[selection];
+        }
     }
 
     private void Start()
@@ -39,6 +42,8 @@ public class ScrewDriverScript : MonoBehaviour
         canHit = true;
 
         sr = GetComponent<SpriteRenderer>();
+
+        screwDrivers.Sort((x, y) => x.waveUnlock.CompareTo(y.waveUnlock));
 
         player = Player.Instance;
 
@@ -74,10 +79,13 @@ public class ScrewDriverScript : MonoBehaviour
 
         ScrollWheel();
 
-        for (int i = 0; i < screwDrivers.Count; i++)
+        for(int i = 0; i < unlockedDrivers.Count; i++)
         {
-            if (Input.GetKeyDown(screwDrivers[i].keyCode))
-                SelectDriver(screwDriver);
+            if(Input.GetKeyDown(unlockedDrivers[i].keyCode))
+            {
+                selection = (i >= (unlockedDrivers.Count - 1) ? 0 : i);
+                SelectDriver(unlockedDrivers[1]);
+            }
         }
     }
 

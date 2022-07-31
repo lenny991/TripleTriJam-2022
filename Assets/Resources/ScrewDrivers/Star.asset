@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Star
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2a662c23a519f6a47b7a743067d56a01, type: 3}
+  spriteUI: {fileID: 21300000, guid: 1537d1f964691f64a9fe89cee5d332dc, type: 3}
   waveUnlock: 5
+  keyboardNumber: 0

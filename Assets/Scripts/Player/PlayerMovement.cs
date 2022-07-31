@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     void Dash(Vector2 dir)
     {
         Tween dash = rb.DOMove(rb.position + (dir * dashLength), .3f);
+        AudioManager.instance.Play("Dash");
         dashing = true;
         canDash = false;
 

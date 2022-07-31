@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
             return 0;
         }
         sound.source.Play();
+        Debug.Log("Playing sound " + sound.name + " " + sound.clip.length);
         return sound.clip.length;
     }
 }

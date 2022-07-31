@@ -57,6 +57,7 @@ public class GameManager : Singleton<GameManager>
 
         enemy.transform.position = pos;
 
+        enemy.transform.parent = transform;
         enemy.GetComponent<Enemy>().moveSpeed = Random.Range(minEnemiesSpeed, maxEnemiesSpeed);
         return enemy;
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
   health: 5
   roamingDistance: 1.4
   moveSpeed: 2.7
-  acceptedDriver: {fileID: 11400000, guid: d90b0d0e4c6c99c4a8f4a4dc8e5306c8, type: 2}
+  acceptedDriver: {fileID: 11400000, guid: ef032f0bae856184caa6c68bebce9853, type: 2}
   damage: 1
 --- !u!61 &8083529178043023496
 BoxCollider2D:

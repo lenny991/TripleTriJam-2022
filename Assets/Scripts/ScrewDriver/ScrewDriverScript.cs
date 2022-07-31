@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Linq;
+
 public class ScrewDriverScript : MonoBehaviour
 {
     //VALUES
@@ -13,9 +15,11 @@ public class ScrewDriverScript : MonoBehaviour
     SpriteRenderer sr;
 
     //OTHER
-    public List<ScrewDriver> screwDrivers;
+    [DisplayWithoutEdit] public List<ScrewDriver> screwDrivers;
     List<ScrewDriver> unlockedDrivers;
     int selection;
+
+    Player player;
 
     public ScrewDriver screwDriver
     {
@@ -30,6 +34,10 @@ public class ScrewDriverScript : MonoBehaviour
 
         sr = GetComponent<SpriteRenderer>();
 
+        player = Player.Instance;
+
+        screwDrivers = Resources.LoadAll<ScrewDriver>("ScrewDrivers").ToList();
+
         GameManager.waveUpdate.AddListener(x =>
         {
             unlockedDrivers = screwDrivers.GetUnlockedDrivers(x);
@@ -42,6 +50,9 @@ public class ScrewDriverScript : MonoBehaviour
 
     private void Update()
     {
+        if (player.dead)
+            return;
+
         if(canHit && Input.GetButtonDown("Fire"))
         {
             anim.SetTrigger("Hit");
@@ -73,6 +84,6 @@ public class ScrewDriverScript : MonoBehaviour
     {
         sr.sprite = driver.sprite;
         int i = Random.Range(1, 4);
-        AudioManager.instance.Play("Screwdriver switching " + i);
+        AudioManager.instance.Play("Screwdriver switching " + Random.Range(1, 4));
     }
 }

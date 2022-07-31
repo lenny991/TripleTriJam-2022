@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")
             );
 
-        if (Input.GetButtonDown("Dash") && canDash)
+        if (!player.dead && canDash && Input.GetButtonDown("Dash"))
         {
             Dash(movement);
         }

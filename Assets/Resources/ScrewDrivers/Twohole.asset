@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd2483eb22909f643b7490dc4ac6677a, type: 3}
-  m_Name: Star
+  m_Name: Twohole
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2a662c23a519f6a47b7a743067d56a01, type: 3}
-  waveUnlock: 5
+  sprite: {fileID: 21300000, guid: 1015768fcbe31fe44a66c4bbf4c0aac7, type: 3}
+  waveUnlock: 20

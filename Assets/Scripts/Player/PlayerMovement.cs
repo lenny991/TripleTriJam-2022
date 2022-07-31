@@ -81,16 +81,19 @@ public class PlayerMovement : MonoBehaviour
     void Dash(Vector2 dir)
     {
         GetComponent<Player>().invincible = true;
-        Tween dash = rb.DOMove(rb.position + (dir * dashLength), .3f);
+        Tween dash = rb.DOMove(rb.position + (dir * dashLength), .4f);
         AudioManager.instance.Play("Dash");
         dashing = true;
         canDash = false;
+
+        visuals.SetRoll(true);
 
         dash.onComplete += () =>
         {
             dashing = false;
             GetComponent<Player>().invincible = false;
             StartCoroutine(CanDashAgain());
+            visuals.SetRoll(false);
 
             IEnumerator CanDashAgain()
             {

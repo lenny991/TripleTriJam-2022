@@ -18,7 +18,7 @@ public class ScrewDriverScript : MonoBehaviour
     //OTHER
     [DisplayWithoutEdit] public List<ScrewDriver> screwDrivers;
     List<ScrewDriver> unlockedDrivers;
-    int selection;
+    public int selection;
 
     Player player;
 
@@ -31,7 +31,6 @@ public class ScrewDriverScript : MonoBehaviour
     {
         get
         {
-            Debug.Log("Selection " + selection);
             return unlockedDrivers[selection];
         }
     }
@@ -48,6 +47,7 @@ public class ScrewDriverScript : MonoBehaviour
         player = Player.Instance;
 
         screwDrivers = Resources.LoadAll<ScrewDriver>("ScrewDrivers").ToList();
+        screwDrivers.Sort((x, y) => x.waveUnlock.CompareTo(y.waveUnlock));
 
         GameManager.waveUpdate.AddListener(x =>
         {
@@ -83,8 +83,8 @@ public class ScrewDriverScript : MonoBehaviour
         {
             if(Input.GetKeyDown(unlockedDrivers[i].keyCode))
             {
-                selection = (i >= (unlockedDrivers.Count - 1) ? 0 : i);
-                SelectDriver(unlockedDrivers[1]);
+                selection = i;
+                SelectDriver(unlockedDrivers[i]);
             }
         }
     }

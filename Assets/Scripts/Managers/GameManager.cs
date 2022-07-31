@@ -33,9 +33,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        SpawnEnemies();
-        waveUpdate.Invoke(0);
+        waveUpdate.Invoke(1);
+        wave = 1;
         waveText.text = "Wave " + wave;
+        SpawnEnemies(1);
         StartCoroutine(ThemeSongCoroutine());
     }
 
@@ -65,6 +66,14 @@ public class GameManager : Singleton<GameManager>
     private void SpawnEnemies()
     {
         for (int i = 0; i < remainingSpawns; i++)
+        {
+            enemies.Add(SpawnEnemy());
+        }
+    }
+
+    private void SpawnEnemies(int amount)
+    {
+        for (int i = 0; i < amount; i++)
         {
             enemies.Add(SpawnEnemy());
         }

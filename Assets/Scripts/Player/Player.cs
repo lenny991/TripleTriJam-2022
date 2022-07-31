@@ -16,9 +16,9 @@ public class Player : Singleton<Player>
 
     //REFERENCES
     [Header("References")]
-    private PlayerVisuals visuals;
+    [HideInInspector] public PlayerVisuals visuals;
     public GameObject respawnCanvas;
-    private PlayerMovement movement;
+    [HideInInspector] public PlayerMovement movement;
     [SerializeField] private TMP_Text healthText;
     CinemachineImpulseSource impulse;
 
@@ -42,7 +42,7 @@ public class Player : Singleton<Player>
             AudioManager.instance.Play("PlayerGetHit");
             GameManager.Instance.combo = 0;
 
-            impulse.GenerateImpulse();
+            InvokeImpulse();
 
             StartCoroutine(InvisFrames());
             IEnumerator InvisFrames()
@@ -68,4 +68,7 @@ public class Player : Singleton<Player>
             }
         }
     }
+
+    public void InvokeImpulse() =>
+        impulse.GenerateImpulse();
 }

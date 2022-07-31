@@ -42,4 +42,7 @@ public class PlayerVisuals : MonoBehaviour
         foreach (SpriteRenderer sr in allAffectedRenderers)
             sr.color = invis ? new Color(sr.color.r, sr.color.g, sr.color.b, .5f) : new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
     }
+
+    public void SetRoll(bool a) =>
+        anim.SetBool("Rolling", a);
 }

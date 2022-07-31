@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 7757680354566321546}
   - component: {fileID: 5037438408556270526}
   - component: {fileID: 3056628912061676783}
+  - component: {fileID: -753265670800732391}
   m_Layer: 0
   m_Name: Circle_Enemy
   m_TagString: Untagged
@@ -148,13 +149,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
+  acceptedDriver: {fileID: 11400000, guid: d90b0d0e4c6c99c4a8f4a4dc8e5306c8, type: 2}
   distanceToFindPlayer: 5
   distanceToRoamingPoint: 0.1
   idleMoveSpeed: 0.4
   health: 4
   roamingDistance: 1.4
   moveSpeed: 2.3
-  acceptedDriver: {fileID: 11400000, guid: d90b0d0e4c6c99c4a8f4a4dc8e5306c8, type: 2}
   damage: 1
 --- !u!61 &3056628912061676783
 BoxCollider2D:
@@ -182,3 +183,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &-753265670800732391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488161159396556061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.1
+      m_DecayTime: 0.2
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343

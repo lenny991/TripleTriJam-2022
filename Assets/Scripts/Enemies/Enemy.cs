@@ -4,6 +4,7 @@ using UnityEngine;
 
 using DG.Tweening;
 using UnityEngine.Events;
+using Cinemachine;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,14 +18,18 @@ public class Enemy : MonoBehaviour
     // targets && references
     [SerializeField] private Vector3 target; //TODO: remove  [SerializeField]
     private Transform playerTransform;
+    public ScrewDriver acceptedDriver;
+    SpriteRenderer sr;
+    CinemachineImpulseSource impulse;
+    Player player;
+    PlayerMovement playerMovement;
 
     // variables
     [SerializeField] private float distanceToFindPlayer = 4, distanceToRoamingPoint = 0.2f, idleMoveSpeed = 0.8f;
     public int health = 10;
     [SerializeField] private float roamingDistance;
     [SerializeField] public float moveSpeed = 2;
-    public ScrewDriver acceptedDriver;
-    SpriteRenderer sr;
+    
     private bool outside = false;
 
     public int damage = 1;
@@ -35,6 +40,10 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
+        impulse = GetComponent<CinemachineImpulseSource>();
+        player = Player.Instance;
+        playerMovement = player.movement;
+
         playerTransform = Player.Instance.transform;
         target = transform.position;
         lastAIState = AIState.Angry;
@@ -114,12 +123,9 @@ public class Enemy : MonoBehaviour
     {
         GameManager.Instance.enemies.Remove(gameObject);
         GetComponent<Collider2D>().enabled = false;
-        Tween fade = sr.DOFade(0, .4f);
-        fade.onComplete += () =>
-        {
-            Destroy(gameObject);
-        };
     }
+
+    bool dead;
 
     // reapeating code functions
 
@@ -152,25 +158,44 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<ScrewDriverScript>(out var skr) && skr.screwDriver == acceptedDriver)
+        if(collision.TryGetComponent<ScrewDriverScript>(out var skr))
         {
-            health--;
-            if (health <= 0)
+            if(skr.screwDriver == acceptedDriver)
             {
-                KnockBack((transform.position - playerTransform.position).normalized);
-                Death();
-                isDying = true;
-                AudioManager.instance.Play("Screw death");
-                GameManager.Instance.combo += 1;
-            }
-            else
-            {
-                KnockBack((transform.position - playerTransform.position).normalized);
+                //impulse.GenerateImpulse(); 
+                health--;
+                if (health <= 0)
+                {
+                    KnockBack((transform.position - playerTransform.position).normalized);
+                    Death();
+                    isDying = true;
+                    AudioManager.instance.Play("Screw death");
+                    GameManager.Instance.combo += 1;
+                }
+                else
+                {
+                    KnockBack((transform.position - playerTransform.position).normalized);
+                }
+
                 Tween fade = sr.DOColor(Color.red, .04f);
                 fade.onComplete += () =>
                 {
                     sr.DOColor(Color.white, .3f);
+                    if (isDying)
+                    {
+                        fade = sr.DOFade(0, .4f);
+                        fade.onComplete += () =>
+                        {
+                            Destroy(gameObject);
+                        };
+                    }
                 };
+            }
+            else
+            {
+                //DO KNOCKBACK, mayve shake screen
+                playerMovement.KnockBack((playerTransform.position - transform.position).normalized);
+                player.InvokeImpulse();
             }
         }
     }

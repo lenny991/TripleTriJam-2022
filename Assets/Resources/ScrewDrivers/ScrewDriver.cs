@@ -7,4 +7,6 @@ public class ScrewDriver : ScriptableObject
 {
     public Sprite sprite;
     public int waveUnlock;
+    public Sprite spriteUI;
+    public KeyCode keyCode;
 }

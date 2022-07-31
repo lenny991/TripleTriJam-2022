@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using System.Linq;
 
@@ -20,6 +21,11 @@ public class ScrewDriverScript : MonoBehaviour
     int selection;
 
     Player player;
+
+    //UI
+    [Header("UI")]
+    [SerializeField] private Image screwdriverImage;
+
 
     public ScrewDriver screwDriver
     {
@@ -53,7 +59,7 @@ public class ScrewDriverScript : MonoBehaviour
         if (player.dead)
             return;
 
-        if(canHit && Input.GetButtonDown("Fire"))
+        if (canHit && Input.GetButtonDown("Fire"))
         {
             anim.SetTrigger("Hit");
             StartCoroutine(CanHit());
@@ -66,9 +72,20 @@ public class ScrewDriverScript : MonoBehaviour
             }
         }
 
+        ScrollWheel();
+
+        for (int i = 0; i < screwDrivers.Count; i++)
+        {
+            if (Input.GetKeyDown(screwDrivers[i].keyCode))
+                SelectDriver(screwDriver);
+        }
+    }
+
+    private void ScrollWheel()
+    {
         float scroll = Input.mouseScrollDelta.y;
 
-        if(scroll != 0)
+        if (scroll != 0)
         {
             int where = selection + (scroll > 0 ? 1 : -1);
             if (where >= unlockedDrivers.Count)
@@ -83,6 +100,7 @@ public class ScrewDriverScript : MonoBehaviour
     public void SelectDriver(ScrewDriver driver)
     {
         sr.sprite = driver.sprite;
+        screwdriverImage.sprite = driver.spriteUI;
         int i = Random.Range(1, 4);
         AudioManager.instance.Play("Screwdriver switching " + Random.Range(1, 4));
     }

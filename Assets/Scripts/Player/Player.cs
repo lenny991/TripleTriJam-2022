@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+using Cinemachine;
+
 public class Player : Singleton<Player>
 {
     //VALUES
@@ -18,11 +20,13 @@ public class Player : Singleton<Player>
     public GameObject respawnCanvas;
     private PlayerMovement movement;
     [SerializeField] private TMP_Text healthText;
+    CinemachineImpulseSource impulse;
 
     private void Start()
     {
         visuals = GetComponentInChildren<PlayerVisuals>();
         movement = GetComponent<PlayerMovement>();
+        impulse = GetComponent<CinemachineImpulseSource>();
         healthText.text = health.ToString();
     }
 
@@ -37,6 +41,8 @@ public class Player : Singleton<Player>
             healthText.text = health.ToString();
             AudioManager.instance.Play("PlayerGetHit");
             GameManager.Instance.combo = 0;
+
+            impulse.GenerateImpulse();
 
             StartCoroutine(InvisFrames());
             IEnumerator InvisFrames()

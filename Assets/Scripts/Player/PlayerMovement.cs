@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerVisuals visuals;
     Player player;
     public Transform rotateTowards;
+    public ParticleSystem moveParticles;
 
     private void Start()
     {
@@ -45,6 +46,14 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector2(
             Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")
             );
+
+        if (movement != Vector2.zero)
+        {
+            if (!moveParticles.isPlaying)
+                moveParticles.Play();
+        }
+        else
+            moveParticles.Stop();
 
         if (!player.dead && canDash && Input.GetButtonDown("Dash"))
         {

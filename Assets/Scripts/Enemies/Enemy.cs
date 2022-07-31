@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float roamingDistance;
     [SerializeField] public float moveSpeed = 2;
     public ScrewDriver acceptedDriver;
+    SpriteRenderer sr;
 
     public int damage = 1;
 
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        sr = GetComponentInChildren<SpriteRenderer>();
         playerTransform = Player.Instance.transform;
         target = transform.position;
         lastAIState = AIState.Angry;
@@ -104,7 +106,12 @@ public class Enemy : MonoBehaviour
     private void Death()
     {
         GameManager.Instance.enemies.Remove(gameObject);
-        Destroy(gameObject);
+        GetComponent<Collider2D>().enabled = false;
+        Tween fade = sr.DOFade(0, .4f);
+        fade.onComplete += () =>
+        {
+            Destroy(gameObject);
+        };
     }
 
     // reapeating code functions
@@ -143,13 +150,21 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                KnockBack((transform.position - playerTransform.position).normalized, Death);
+                KnockBack((transform.position - playerTransform.position).normalized);
+                Death();
                 isDying = true;
                 AudioManager.instance.Play("Screw death");
                 GameManager.Instance.combo += 1;
             }
             else
+            {
                 KnockBack((transform.position - playerTransform.position).normalized);
+                Tween fade = sr.DOColor(Color.red, .04f);
+                fade.onComplete += () =>
+                {
+                    sr.DOColor(Color.white, .3f);
+                };
+            }
         }
     }
 

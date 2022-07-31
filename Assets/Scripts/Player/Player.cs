@@ -11,7 +11,7 @@ public class Player : Singleton<Player>
     [Header("Values")]
     public int startHealth;
     public int health;
-    private bool invincible;
+    public bool invincible;
     [HideInInspector] public bool dead;
 
     //REFERENCES

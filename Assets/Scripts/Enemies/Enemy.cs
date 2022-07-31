@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float moveSpeed = 2;
     public ScrewDriver acceptedDriver;
     SpriteRenderer sr;
+    private bool outside = false;
 
     public int damage = 1;
 
@@ -48,11 +49,15 @@ public class Enemy : MonoBehaviour
 
         FindPlayer();
 
-        AiStateCheck();     
+        if (!outside)
+            AiStateCheck();
+        else
+            MoveTowardsTarget(moveSpeed);
     }
 
     private void CheckBoundaries()
     {
+        outside = true;
         if (transform.position.x > screen_x)
             target = new Vector3(transform.position.x - 3, transform.position.y + Random.Range(-roamingDistance, roamingDistance), transform.position.z);
         else if (transform.position.x < -screen_x)
@@ -61,6 +66,8 @@ public class Enemy : MonoBehaviour
             target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y - 3, transform.position.z);
         else if (transform.position.y < -screen_y)
             target = new Vector3(transform.position.x + Random.Range(-roamingDistance, roamingDistance), transform.position.y + 3, transform.position.z);
+        else
+            outside = false;
     }
 
     private void FindPlayer()

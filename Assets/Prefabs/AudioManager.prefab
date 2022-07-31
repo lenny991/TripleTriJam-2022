@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8036066862089189962
+--- !u!1 &3230829680216174488
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8036066862089189964}
-  - component: {fileID: 8036066862089189963}
+  - component: {fileID: 2863105950682679424}
+  - component: {fileID: 4991985171801915663}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8036066862089189964
+--- !u!4 &2863105950682679424
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036066862089189962}
+  m_GameObject: {fileID: 3230829680216174488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8036066862089189963
+--- !u!114 &4991985171801915663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036066862089189962}
+  m_GameObject: {fileID: 3230829680216174488}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a97be4bd68e90eb4bac8d54b8b0b727d, type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: PlayerGetHit
-    clip: {fileID: 8300000, guid: 077fed25b8c06fa408bd0a9da467c29c, type: 3}
+    clip: {fileID: 8300000, guid: 1f3841111d5962c47a06742fa0004779, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Screw death
-    clip: {fileID: 8300000, guid: d2eb55efda7b4c74da719e9a8cdc8669, type: 3}
+    clip: {fileID: 8300000, guid: 9b7a31b63c679894ca27029974ef2a74, type: 3}
     volume: 0.3
     pitch: 0.8
     loop: 0
@@ -143,6 +143,12 @@ MonoBehaviour:
   - name: Start game
     clip: {fileID: 8300000, guid: 0dd84797dba6f8040b8ac3051cfcc8e7, type: 3}
     volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 34f89cc3421a1ca42878f1d8b1f51e98, type: 3}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}

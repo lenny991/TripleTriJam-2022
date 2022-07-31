@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Regular
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 78ef8c82a8760934d8466f9a7eb25c1e, type: 3}
-  spriteUI: {fileID: 21300000, guid: 6b4c0b8148d80dd478300d0d9ff47550, type: 3}
   waveUnlock: 0
-  keyboardNumber: 0
+  spriteUI: {fileID: 21300000, guid: 6b4c0b8148d80dd478300d0d9ff47550, type: 3}
+  keyCode: 282

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Twohole
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1015768fcbe31fe44a66c4bbf4c0aac7, type: 3}
-  spriteUI: {fileID: 21300000, guid: db89d76f3e895fe448ca06ecc83c749c, type: 3}
   waveUnlock: 20
-  keyboardNumber: 0
+  spriteUI: {fileID: 21300000, guid: 8bdd4f06c8acd1d40acca61e4d9c9a57, type: 3}
+  keyCode: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Triangle
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 906871f3b4cef274eb3073c38ea8e059, type: 3}
-  spriteUI: {fileID: 21300000, guid: c4b693102ef2d5344a8e2df1297c4017, type: 3}
   waveUnlock: 10
-  keyboardNumber: 0
+  spriteUI: {fileID: 21300000, guid: c4b693102ef2d5344a8e2df1297c4017, type: 3}
+  keyCode: 0

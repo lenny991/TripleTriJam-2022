@@ -74,7 +74,7 @@ public class GameManager : Singleton<GameManager>
     {
         wave++;
         waveUpdate.Invoke(wave);
-        remainingSpawns = (wave * defaultWaveEnemiesInt) / 2;
+        remainingSpawns = (wave * defaultWaveEnemiesInt) / 3;
         SpawnEnemies();
         waveText.text = "Wave " + wave;
     }

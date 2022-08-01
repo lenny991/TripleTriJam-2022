@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3230829680216174488
+--- !u!1 &3867127468903378422
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2863105950682679424}
-  - component: {fileID: 4991985171801915663}
+  - component: {fileID: 2540756708372394396}
+  - component: {fileID: 2642662767675006263}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2863105950682679424
+--- !u!4 &2540756708372394396
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3230829680216174488}
+  m_GameObject: {fileID: 3867127468903378422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4991985171801915663
+--- !u!114 &2642662767675006263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3230829680216174488}
+  m_GameObject: {fileID: 3867127468903378422}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a97be4bd68e90eb4bac8d54b8b0b727d, type: 3}
@@ -45,15 +45,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme start
-    clip: {fileID: 8300000, guid: b012e4036f2b2d14f9d843178a335418, type: 3}
-    volume: 0.4
-    pitch: 0.5
+    clip: {fileID: 8300000, guid: f15b133f80e10994bb544b690e666677, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Theme
-    clip: {fileID: 8300000, guid: 287959dfe24e5d04fa2f284cf9f82cdd, type: 3}
-    volume: 0.4
-    pitch: 0.5
+    clip: {fileID: 8300000, guid: 96be0cd91f381d247a08ad17748a8bdb, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: PlayerGetHit
@@ -142,7 +142,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Start game
     clip: {fileID: 8300000, guid: 0dd84797dba6f8040b8ac3051cfcc8e7, type: 3}
-    volume: 0.1
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -34,8 +34,8 @@ public class Enemy : MonoBehaviour
 
     public int damage = 1;
 
-    const float screen_x = 8.5f;
-    const float screen_y = 4.5f;
+    const float screen_x = 8.2f;
+    const float screen_y = 4.2f;
 
     private void Start()
     {
@@ -121,6 +121,7 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        GameManager.Instance.enemiesKilled += 1;
         GameManager.Instance.enemies.Remove(gameObject);
         GetComponent<Collider2D>().enabled = false;
     }
@@ -170,7 +171,6 @@ public class Enemy : MonoBehaviour
                     Death();
                     isDying = true;
                     AudioManager.instance.Play("Screw death");
-                    GameManager.Instance.combo += 1;
                 }
                 else
                 {
@@ -195,7 +195,7 @@ public class Enemy : MonoBehaviour
             {
                 //DO KNOCKBACK, mayve shake screen
                 playerMovement.KnockBack((playerTransform.position - transform.position).normalized);
-                player.InvokeImpulse();
+                //player.InvokeImpulse();
             }
         }
     }

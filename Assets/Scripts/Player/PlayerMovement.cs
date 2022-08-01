@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     //VALUES
     public float speed = 4;
 
-    public float dashLength = 6;
+    public float dashLength = 2.5f;
     public float dashDelay = 2;
 
     bool canPlayWalkingSound = true;

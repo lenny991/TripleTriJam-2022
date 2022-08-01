@@ -16,10 +16,17 @@ public class GameManager : Singleton<GameManager>
     // wave works as a multiplier for enemies
     public int wave = 0;
 
+    [SerializeField] private TMP_Text enemiesKilledText;
+    public int enemiesKilled = 0;
+
     [SerializeField] private int defaultWaveEnemiesInt;
     private int remainingSpawns;
 
-    public int combo = 0;
+    private bool isTutorialOn = true;
+    private bool playedIntro = false;
+
+    [Header("Tutorial")]
+    [SerializeField] private GameObject tutorialCanvas;
 
     const float screen_x = 8.5f;
     const float screen_y = 4.5f;
@@ -36,13 +43,15 @@ public class GameManager : Singleton<GameManager>
         waveUpdate.Invoke(1);
         wave = 1;
         waveText.text = "Wave " + wave;
-        SpawnEnemies(1);
-        StartCoroutine(ThemeSongCoroutine());
+        if(!playedIntro)
+            StartCoroutine(ThemeSongCoroutine());
+        tutorialCanvas.SetActive(true);
     }
 
     IEnumerator ThemeSongCoroutine()
     {
         yield return new WaitForSeconds(AudioManager.instance.Play("Theme start"));
+        playedIntro = true;
         AudioManager.instance.Play("Theme");
     }
 
@@ -81,16 +90,26 @@ public class GameManager : Singleton<GameManager>
 
     private void NewWave()
     {
+        if (wave == 0 || wave == 1)
+            enemiesKilled = 0;
+
         wave++;
         waveUpdate.Invoke(wave);
-        remainingSpawns = (wave * defaultWaveEnemiesInt) / 3;
+        remainingSpawns = Mathf.FloorToInt(wave * defaultWaveEnemiesInt / 2.2f);
         SpawnEnemies();
         waveText.text = "Wave " + wave;
     }
 
     private void Update()
     {
-        if (enemies.Count <= 0)
+        if(isTutorialOn && Input.anyKeyDown)
+        {
+            tutorialCanvas.SetActive(false);
+            isTutorialOn = false;
+            SpawnEnemies(1);
+        }
+        enemiesKilledText.text = "You killed: " + enemiesKilled;
+        if (enemies.Count <= 0 && !isTutorialOn)
             NewWave();
     }
 }

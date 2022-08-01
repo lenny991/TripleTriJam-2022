@@ -40,7 +40,6 @@ public class Player : Singleton<Player>
             health -= enemy.damage;
             healthText.text = health.ToString();
             AudioManager.instance.Play("PlayerGetHit");
-            GameManager.Instance.combo = 0;
 
             InvokeImpulse();
 
